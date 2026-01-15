@@ -1,7 +1,7 @@
 package org.example.pantrywisecmp.di
 
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import org.example.pantrywisecmp.product.data.InventoryRepository
+import org.example.pantrywisecmp.product.data.ProductRepositoryImpl
 import org.example.pantrywisecmp.product.data.database.DatabaseFactory
 import org.example.pantrywisecmp.product.data.database.PantryWiseDatabase
 import org.example.pantrywisecmp.product.domain.ProductRepository
@@ -19,5 +19,6 @@ val sharedModule = module {
             .build()
     }
     single { get<PantryWiseDatabase>().productDao() }
+    singleOf(::ProductRepositoryImpl).bind<ProductRepository>() //TODO Rozdziel ProductRepo na Inventory i ShoppingList?
 
 }
