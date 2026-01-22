@@ -29,6 +29,6 @@ interface ProductDao {
     @Delete
     suspend fun deleteProduct(dbProduct: ProductEntity)
 
-    @Delete
-    suspend fun deleteProductList(dbProductList: List<ProductEntity>)
+    @Query("""DELETE FROM $PRODUCT_TABLE WHERE id IN (:dbProductIdSet) """)
+    suspend fun deleteProductListByIds(dbProductIdSet: Set<Int>)
 }

@@ -1,16 +1,23 @@
 package org.example.pantrywisecmp.product.data
 
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import org.example.pantrywisecmp.product.data.database.*
+import org.example.pantrywisecmp.product.data.database.ProductDao
+import org.example.pantrywisecmp.product.data.mappers.toProduct
 import org.example.pantrywisecmp.product.data.mappers.toProductEntity
 import org.example.pantrywisecmp.product.domain.*
 
 class ProductRepositoryImpl(
     private val productDao: ProductDao
 ) : ProductRepository {
-    override fun getProducts(): Flow<List<ProductEntity>> =
-        productDao.getProductListByStatus(ProductStatus.INVENTORY)
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override fun getProducts(productStatus: ProductStatus): Flow<List<Product>> =
+        productDao.getProductListByStatus(productStatus).map {
+            if (it.isEmpty())
+                MockDataHelper.getMockProductList()
+            else it.map { productEntity -> productEntity.toProduct() }
+        }
 
 
     override fun getRecentProducts(query: String): Flow<List<ProductSuggestion>> {
@@ -41,7 +48,7 @@ class ProductRepositoryImpl(
         productDao.deleteProduct(dbProduct)
     }
 
-    override suspend fun deleteProductList(productList: List<Product>) {
-        productDao.deleteProductList(productList.map { it.toProductEntity() })
+    override suspend fun deleteProductList(productIdSet: Set<Int>) {
+        productDao.deleteProductListByIds(productIdSet)
     }
 }
