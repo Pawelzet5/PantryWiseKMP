@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="app_name">PantryWise</string>
+
+    <string name="common_cancel">Cancel</string>
+    <string name="common_ok">OK</string>
+    <string name="common_delete">Delete</string>
+    <string name="common_edit">Edit</string>
+    <string name="common_remove">Remove</string>
+    <string name="common_save">Save</string>
+    <string name="common_error">We\'re sorry, but something went wrong.\n Please try again later.</string>
+
+    <string name="inventory_header">My Inventory</string>
+    <string name="adding_product_header">Add to inventory</string>
+    <string name="shopping_list_header">Shopping list</string>
+    <string name="product_adding_selection_header">How would you like to add your products?</string>
+    <string name="add_product">Add Product</string>
+    <string name="more_options">More Options</string>
+
+    <string name="shopping_list_completed_card_label">Completed</string>
+
+    <string name="product_menu_option_move_to_shopping_list">Move to shopping list</string>
+    <string name="product_menu_option_full_edit">Full edit</string>
+
+    <string name="product_expiration_date_past">%1$d days expired</string>
+    <string name="product_expiration_date_today">Expires today!</string>
+    <string name="product_expiration_date_future">%1$d days</string>
+    <string name="product_category_with_count">%1$s [%2$d]</string>
+
+    <string name="product_suggestion_type_selected_label">Selected</string>
+    <string name="product_suggestion_type_search_label">Search</string>
+    <string name="product_suggestion_type_recent_label">Recent</string>
+    <string name="selected_product_list_empty_message">Nothing here yet.\nAdd items manually or move them\nfrom your shopping list once bought.</string>
+    <string name="recent_product_list_empty_message">Nothing here yet.\nOnce you add some items to your inventory they will appear in this list as well as a shortcut to add them again.</string>
+
+    <string name="suggested_product_list_empty_message_headline">Oops!</string>
+    <string name="suggested_product_list_empty_message_content">Sorry, we couldn\'t find this product.</string>
+    <string name="suggested_product_list_empty_message_add_product_text">Add product manually</string>
+    <string name="product_input_search_placeholder">Search product</string>
+    <string name="product_input_view_add_product">Add Product</string>
+    <string name="product_input_view_add_products_to_inventory">Add products to the inventory</string>
+    <string name="product_input_view_name_label">Name</string>
+    <string name="product_input_view_name_placeholder">Name your product</string>
+    <string name="product_input_view_details_label">Details</string>
+    <string name="product_input_view_details_placeholder">Your own details</string>
+    <string name="product_input_view_category_label">Category</string>
+    <string name="product_input_view_expiration_date_label">Expiration date</string>
+    <string name="product_input_view_expiration_date_placeholder">mm/dd/yyyy</string>
+    <string name="product_input_view_quantity_label">Quantity</string>
+    <string name="product_input_view_quantity_placeholder">0</string>
+    <string name="product_input_view_unit_label">Unit</string>
+    <string name="product_input_view_date_picker_title">Choose when this product expires.</string>
+    <string name="product_input_view_date_picker_description">Select Expiration Date</string>
+
+    <string name="product_input_empty_name_validation_message">A name cannot be empty.</string>
+    <string name="product_input_negative_quantity_validation_message">Quantity cannot be negative.</string>
+    <string name="product_input_invalid_quantity_validation_message">Invalid quantity.</string>
+
+    <string name="welcome_screen_content">Shop smarter, waste less, stay organized.</string>
+    <string name="welcome_screen_button_text">Let\'s start!</string>
+
+    <string name="product_unit_gram">Gram (g)</string>
+    <string name="product_unit_kilogram">Kilogram (kg)</string>
+    <string name="product_unit_milligram">Milligram (mg)</string>
+    <string name="product_unit_pound">Pound (lb)</string>
+    <string name="product_unit_ounce">Ounce (oz)</string>
+    <string name="product_unit_milliliter">Milliliter (ml)</string>
+    <string name="product_unit_liter">Liter (l)</string>
+    <string name="product_unit_teaspoon">Teaspoon (tsp)</string>
+    <string name="product_unit_tablespoon">Tablespoon (tbsp)</string>
+    <string name="product_unit_short_gram">g</string>
+    <string name="product_unit_short_kilogram">kg</string>
+    <string name="product_unit_short_milligram">mg</string>
+    <string name="product_unit_short_pound">lb</string>
+    <string name="product_unit_short_ounce">oz</string>
+    <string name="product_unit_short_milliliter">ml</string>
+    <string name="product_unit_short_liter">l</string>
+    <string name="product_unit_short_teaspoon">tsp</string>
+    <string name="product_unit_short_tablespoon">tbsp</string>
+    <string name="product_unit_cup">Cup</string>
+    <string name="product_unit_pint">Pint</string>
+    <string name="product_unit_quart">Quart</string>
+    <string name="product_unit_gallon">Gallon</string>
+    <string name="product_unit_piece">Piece</string>
+    <string name="product_unit_dozen">Dozen</string>
+    <string name="product_unit_pack">Pack</string>
+    <string name="product_unit_bottle">Bottle</string>
+    <string name="product_unit_can">Can</string>
+    <string name="product_unit_jar">Jar</string>
+    <string name="product_unit_bag">Bag</string>
+    <string name="product_unit_box">Box</string>
+
+    <!-- Product Categories -->
+    <string name="category_dairy_eggs">Dairy &amp; Eggs</string>
+    <string name="category_beverages">Beverages</string>
+    <string name="category_bakery">Bakery</string>
+    <string name="category_meat_seafood">Meat &amp; Seafood</string>
+    <string name="category_produce">Produce</string>
+    <string name="category_grains_cereals">Grains &amp; Cereals</string>
+    <string name="category_canned_goods">Canned Goods</string>
+    <string name="category_condiments_sauces">Condiments &amp; Sauces</string>
+    <string name="category_snacks_sweets">Snacks &amp; Sweets</string>
+    <string name="category_spices_seasonings">Spices &amp; Seasonings</string>
+    <string name="category_oils_fats">Oils &amp; Fats</string>
+    <string name="category_frozen_foods">Frozen Foods</string>
+    <string name="category_pantry_staples">Pantry Staples</string>
+    <string name="category_other">Other</string>
+    <string name="item_count_single">item</string>
+    <string name="item_count_plural">items</string>
+</resources>
