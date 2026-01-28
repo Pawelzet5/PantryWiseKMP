@@ -5,15 +5,17 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import org.example.pantrywisecmp.product.domain.Product
-import org.example.pantrywisecmp.product.presentation.components.*
+import org.example.pantrywisecmp.product.presentation.components.CategorizedProductGrid
+import org.example.pantrywisecmp.product.presentation.components.ProductExpirationDateInfo
+import org.example.pantrywisecmp.product.presentation.productActionMenu.ProductMenuAction
+import org.example.pantrywisecmp.product.presentation.productActionMenu.ProductMenuDialogRoot
+import org.example.pantrywisecmp.product.presentation.productActionMenu.ProductMenuViewModel
 import org.example.pantrywisecmp.product.presentation.util.getShortLabel
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -23,13 +25,25 @@ import pantrywisecmp.composeapp.generated.resources.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InventoryScreenRoot(
-    viewModel: InventoryScreenViewModel = koinViewModel()
+    inventoryViewModel: InventoryScreenViewModel = koinViewModel()
 ) {
-    val state by viewModel.state.collectAsState()
+    val state by inventoryViewModel.state.collectAsState()
     InventoryScreenContent(
         state = state,
-        onAction = viewModel::onAction
+        onAction = inventoryViewModel::onAction
     )
+    state.selectedProduct?.let {
+        val productMenuViewModel = koinViewModel<ProductMenuViewModel>()
+
+        LaunchedEffect(it) {
+            productMenuViewModel.onAction(ProductMenuAction.OnProductSelected(it))
+        }
+
+        ProductMenuDialogRoot(
+            productMenuViewModel,
+            onDismiss = { inventoryViewModel.onAction(InventoryScreenAction.OnProductDeselected) }
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

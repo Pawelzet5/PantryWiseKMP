@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import org.example.pantrywisecmp.core.domain.UiText
 import org.example.pantrywisecmp.core.domain.extensions.toggle
 import org.example.pantrywisecmp.product.domain.*
 
@@ -21,9 +20,6 @@ class InventoryScreenViewModel(
     private val expandedCategories = MutableStateFlow<Set<ProductCategory>>(emptySet())
     private val selectedProduct = MutableStateFlow<Product?>(null)
     private val selectedIds = MutableStateFlow<Set<Int>>(emptySet())
-
-    private val _errorMessage = MutableSharedFlow<UiText?>()
-    val errorMessages: SharedFlow<UiText?> = _errorMessage.asSharedFlow()
 
     val state: StateFlow<InventoryScreenState> =
         combine(
