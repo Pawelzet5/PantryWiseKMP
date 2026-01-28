@@ -1,12 +1,12 @@
 package org.example.pantrywisecmp.di
 
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import org.example.pantrywisecmp.product.data.ProductRepositoryImpl
-import org.example.pantrywisecmp.product.data.SuggestionsRepositoryImpl
+import org.example.pantrywisecmp.product.data.repository.ProductRepositoryImpl
+import org.example.pantrywisecmp.product.data.repository.SuggestionsRepositoryImpl
 import org.example.pantrywisecmp.product.data.database.DatabaseFactory
 import org.example.pantrywisecmp.product.data.database.PantryWiseDatabase
-import org.example.pantrywisecmp.product.domain.ProductRepository
-import org.example.pantrywisecmp.product.domain.SuggestionsRepository
+import org.example.pantrywisecmp.product.domain.repository.ProductRepository
+import org.example.pantrywisecmp.product.domain.repository.SuggestionsRepository
 import org.example.pantrywisecmp.product.domain.usecase.ProductQuantityValidationUseCase
 import org.example.pantrywisecmp.product.presentation.inventory.InventoryScreenViewModel
 import org.example.pantrywisecmp.product.presentation.product_action_menu.ProductMenuViewModel

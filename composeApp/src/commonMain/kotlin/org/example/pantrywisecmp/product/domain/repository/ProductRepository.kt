@@ -1,6 +1,9 @@
-package org.example.pantrywisecmp.product.domain
+package org.example.pantrywisecmp.product.domain.repository
 
 import kotlinx.coroutines.flow.Flow
+import org.example.pantrywisecmp.product.domain.Product
+import org.example.pantrywisecmp.product.domain.ProductStatus
+import org.example.pantrywisecmp.product.domain.ProductSuggestion
 
 interface ProductRepository {
     fun getProducts(productStatus: ProductStatus): Flow<List<Product>>

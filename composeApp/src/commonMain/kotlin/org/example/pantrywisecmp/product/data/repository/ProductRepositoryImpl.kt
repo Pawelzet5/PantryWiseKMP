@@ -1,12 +1,14 @@
-package org.example.pantrywisecmp.product.data
+package org.example.pantrywisecmp.product.data.repository
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import org.example.pantrywisecmp.product.data.MockDataHelper
 import org.example.pantrywisecmp.product.data.database.ProductDao
 import org.example.pantrywisecmp.product.data.mappers.toProduct
 import org.example.pantrywisecmp.product.data.mappers.toProductEntity
 import org.example.pantrywisecmp.product.domain.*
+import org.example.pantrywisecmp.product.domain.repository.ProductRepository
 
 class ProductRepositoryImpl(
     private val productDao: ProductDao

@@ -1,7 +1,7 @@
-package org.example.pantrywisecmp.product.data
+package org.example.pantrywisecmp.product.data.repository
 
 import org.example.pantrywisecmp.product.domain.ProductSuggestion
-import org.example.pantrywisecmp.product.domain.SuggestionsRepository
+import org.example.pantrywisecmp.product.domain.repository.SuggestionsRepository
 
 
 class SuggestionsRepositoryImpl() : SuggestionsRepository {
@@ -93,5 +93,7 @@ class SuggestionsRepositoryImpl() : SuggestionsRepository {
     override fun getSuggestions(query: String): List<ProductSuggestion> {
         return allProductNames.filter { it.name.contains(query, ignoreCase = true) }
     }
+
+    ge
 }
 

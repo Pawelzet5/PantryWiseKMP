@@ -6,6 +6,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import org.example.pantrywisecmp.core.domain.extensions.toggle
 import org.example.pantrywisecmp.product.domain.*
+import org.example.pantrywisecmp.product.domain.repository.ProductRepository
 
 class InventoryScreenViewModel(
     private val productRepository: ProductRepository
