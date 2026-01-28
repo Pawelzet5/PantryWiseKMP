@@ -7,6 +7,7 @@ import kotlinx.datetime.toLocalDateTime
 import kotlinx.datetime.daysUntil
 import kotlinx.datetime.format.FormatStringsInDatetimeFormats
 import kotlinx.datetime.format.byUnicodePattern
+import kotlin.time.Clock
 import kotlin.time.Instant
 
 object DateTimeHelper {
@@ -16,6 +17,8 @@ object DateTimeHelper {
         LocalDateTime.Format {
             byUnicodePattern("dd/MM/yyyy")
         }
+
+    fun getCurrentTimeStamMillis(): Long = Clock.System.now().toEpochMilliseconds()
 
     fun formatTimestampToDayMonthYear(
         timestampMillis: Long,
