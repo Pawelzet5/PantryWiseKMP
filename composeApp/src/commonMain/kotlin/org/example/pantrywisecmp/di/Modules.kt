@@ -24,4 +24,6 @@ val sharedModule = module {
     singleOf(::ProductRepositoryImpl).bind<ProductRepository>() //TODO Rozdziel ProductRepo na Inventory i ShoppingList?
 
     viewModelOf(::InventoryScreenViewModel)
+    viewModelOf(::ProductInputViewModel)
+    factory { ProductQuantityValidationUseCase() }
 }
