@@ -6,7 +6,7 @@ import co.touchlab.kermit.Logger
 object LogUtils {
     private const val DEFAULT_TAG = "PantryWiseApp"
 
-    fun debug(message: String, tag: String = DEFAULT_TAG) {
+    fun debug( tag: String = DEFAULT_TAG,message: String) {
         Logger.d(messageString = message, tag = tag)
     }
 

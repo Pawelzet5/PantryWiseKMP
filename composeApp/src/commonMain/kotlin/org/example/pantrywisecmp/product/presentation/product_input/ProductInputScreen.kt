@@ -79,7 +79,6 @@ fun ProductInputScreen(
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.clickable {
                         onAction(ProductInputAction.OnSubmitProductInputClick)
-                        onCancelClick()
                     }
                 )
             }

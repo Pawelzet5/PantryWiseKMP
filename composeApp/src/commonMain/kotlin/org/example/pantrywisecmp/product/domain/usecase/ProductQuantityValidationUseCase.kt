@@ -7,9 +7,10 @@ sealed interface QuantityValidationResult {
 }
 
 class ProductQuantityValidationUseCase {
-    fun invoke(quantityText: String): QuantityValidationResult {
-        val quantityDouble = quantityText.toDoubleOrNull()
+    fun invoke(quantityText: String?): QuantityValidationResult {
+        val quantityDouble = quantityText?.toDoubleOrNull()
         return when {
+            quantityText.isNullOrBlank() -> QuantityValidationResult.Success
             quantityDouble == null -> QuantityValidationResult.InvalidNumber
             quantityDouble < 0 -> QuantityValidationResult.Negative
             else -> QuantityValidationResult.Success

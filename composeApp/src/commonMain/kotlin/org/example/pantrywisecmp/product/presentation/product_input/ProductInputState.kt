@@ -19,7 +19,7 @@ data class ProductInputState(
     fun toDraft(): ProductDraft = ProductDraft(
         name = name,
         details = details,
-        quantity = quantity.toDouble(),
+        quantity = quantity.toDoubleOrNull(),
         productUnit = unit,
         category = category,
         expirationDate = expirationDate
@@ -29,7 +29,7 @@ data class ProductInputState(
         fun fromProductDraft(productDraft: ProductDraft) = ProductInputState(
             name = productDraft.name,
             details = productDraft.details,
-            quantity = productDraft.quantity.toString(),
+            quantity = productDraft.quantity?.toString().orEmpty(),
             expirationDate = productDraft.expirationDate,
             unit = productDraft.productUnit,
             category = productDraft.category
