@@ -6,9 +6,9 @@ import org.example.pantrywisecmp.product.data.database.DatabaseFactory
 import org.example.pantrywisecmp.product.data.database.PantryWiseDatabase
 import org.example.pantrywisecmp.product.domain.ProductRepository
 import org.example.pantrywisecmp.product.domain.usecase.ProductQuantityValidationUseCase
-import org.example.pantrywisecmp.product.presentation.inventoryScreen.InventoryScreenViewModel
-import org.example.pantrywisecmp.product.presentation.productActionMenu.ProductMenuViewModel
-import org.example.pantrywisecmp.product.presentation.productInputScreen.ProductInputViewModel
+import org.example.pantrywisecmp.product.presentation.inventory.InventoryScreenViewModel
+import org.example.pantrywisecmp.product.presentation.product_action_menu.ProductMenuViewModel
+import org.example.pantrywisecmp.product.presentation.product_input.ProductInputViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
@@ -24,7 +24,8 @@ val sharedModule = module {
             .build()
     }
     single { get<PantryWiseDatabase>().productDao() }
-    singleOf(::ProductRepositoryImpl).bind<ProductRepository>() //TODO Rozdziel ProductRepo na Inventory i ShoppingList?
+
+    singleOf(::ProductRepositoryImpl).bind<ProductRepository>()
 
     viewModelOf(::InventoryScreenViewModel)
     viewModelOf(::ProductMenuViewModel)

@@ -1,4 +1,4 @@
-package org.example.pantrywisecmp.product.presentation.productInputScreen
+package org.example.pantrywisecmp.product.presentation.product_input
 
 import org.example.pantrywisecmp.core.domain.UiText
 import org.example.pantrywisecmp.product.domain.*

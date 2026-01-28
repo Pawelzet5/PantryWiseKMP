@@ -1,4 +1,4 @@
-package org.example.pantrywisecmp.product.presentation.inventoryScreen
+package org.example.pantrywisecmp.product.presentation.inventory
 
 import org.example.pantrywisecmp.product.domain.Product
 import org.example.pantrywisecmp.product.domain.ProductCategory

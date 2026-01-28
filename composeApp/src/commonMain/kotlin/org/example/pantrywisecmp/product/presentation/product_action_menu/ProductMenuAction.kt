@@ -1,4 +1,4 @@
-package org.example.pantrywisecmp.product.presentation.productActionMenu
+package org.example.pantrywisecmp.product.presentation.product_action_menu
 
 import org.example.pantrywisecmp.product.domain.Product
 import org.example.pantrywisecmp.product.domain.ProductDraft

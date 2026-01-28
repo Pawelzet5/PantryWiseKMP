@@ -1,4 +1,4 @@
-package org.example.pantrywisecmp.product.presentation.productInputScreen
+package org.example.pantrywisecmp.product.presentation.product_input
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*

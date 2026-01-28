@@ -1,4 +1,4 @@
-package org.example.pantrywisecmp.product.presentation.productActionMenu
+package org.example.pantrywisecmp.product.presentation.product_action_menu
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

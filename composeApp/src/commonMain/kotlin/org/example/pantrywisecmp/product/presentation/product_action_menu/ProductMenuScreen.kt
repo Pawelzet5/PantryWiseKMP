@@ -1,4 +1,4 @@
-package org.example.pantrywisecmp.product.presentation.productActionMenu
+package org.example.pantrywisecmp.product.presentation.product_action_menu
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.clickable
@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import org.example.pantrywisecmp.core.domain.UiText
 import org.example.pantrywisecmp.product.domain.ProductUnit
 import org.example.pantrywisecmp.product.presentation.components.ProductQuantityAndUnitInput
-import org.example.pantrywisecmp.product.presentation.productInputScreen.*
+import org.example.pantrywisecmp.product.presentation.product_input.*
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import pantrywisecmp.composeapp.generated.resources.*

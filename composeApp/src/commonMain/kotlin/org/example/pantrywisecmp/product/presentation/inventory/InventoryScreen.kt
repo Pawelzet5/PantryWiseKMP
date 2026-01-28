@@ -1,4 +1,4 @@
-package org.example.pantrywisecmp.product.presentation.inventoryScreen
+package org.example.pantrywisecmp.product.presentation.inventory
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -13,9 +13,9 @@ import androidx.compose.ui.unit.dp
 import org.example.pantrywisecmp.product.domain.Product
 import org.example.pantrywisecmp.product.presentation.components.CategorizedProductGrid
 import org.example.pantrywisecmp.product.presentation.components.ProductExpirationDateInfo
-import org.example.pantrywisecmp.product.presentation.productActionMenu.ProductMenuAction
-import org.example.pantrywisecmp.product.presentation.productActionMenu.ProductMenuDialogRoot
-import org.example.pantrywisecmp.product.presentation.productActionMenu.ProductMenuViewModel
+import org.example.pantrywisecmp.product.presentation.product_action_menu.ProductMenuAction
+import org.example.pantrywisecmp.product.presentation.product_action_menu.ProductMenuDialogRoot
+import org.example.pantrywisecmp.product.presentation.product_action_menu.ProductMenuViewModel
 import org.example.pantrywisecmp.product.presentation.util.getShortLabel
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel

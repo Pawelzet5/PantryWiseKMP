@@ -1,4 +1,4 @@
-package org.example.pantrywisecmp.product.presentation.inventoryScreen
+package org.example.pantrywisecmp.product.presentation.inventory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
