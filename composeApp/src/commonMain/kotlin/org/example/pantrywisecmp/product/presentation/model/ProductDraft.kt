@@ -16,6 +16,7 @@ data class ProductDraft(
     val productUnit: ProductUnit = ProductUnit.PIECE,
     val category: ProductCategory = ProductCategory.OTHER,
     val expirationDate: Long? = null,
+    val isDeleteOptionRevealed: Boolean = false
 )
 
 fun ProductDraft.toProduct(productStatus: ProductStatus) = Product(

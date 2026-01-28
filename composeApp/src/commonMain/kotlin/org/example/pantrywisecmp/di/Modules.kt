@@ -8,6 +8,7 @@ import org.example.pantrywisecmp.product.data.database.PantryWiseDatabase
 import org.example.pantrywisecmp.product.domain.repository.ProductRepository
 import org.example.pantrywisecmp.product.domain.repository.SuggestionsRepository
 import org.example.pantrywisecmp.product.domain.usecase.ProductQuantityValidationUseCase
+import org.example.pantrywisecmp.product.presentation.adding_products.SearchAndSelectProductsViewModel
 import org.example.pantrywisecmp.product.presentation.inventory.InventoryScreenViewModel
 import org.example.pantrywisecmp.product.presentation.product_action_menu.ProductMenuViewModel
 import org.example.pantrywisecmp.product.presentation.product_input.ProductInputViewModel
@@ -33,5 +34,6 @@ val sharedModule = module {
     viewModelOf(::InventoryScreenViewModel)
     viewModelOf(::ProductMenuViewModel)
     viewModelOf(::ProductInputViewModel)
+    viewModelOf(::SearchAndSelectProductsViewModel)
     factory { ProductQuantityValidationUseCase() }
 }
