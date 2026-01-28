@@ -13,7 +13,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import org.example.pantrywisecmp.core.presentation.components.*
 import org.example.pantrywisecmp.product.domain.ProductCategory
-import org.example.pantrywisecmp.product.domain.ProductDraft
+import org.example.pantrywisecmp.product.presentation.model.ProductDraft
 import org.example.pantrywisecmp.product.presentation.components.ProductQuantityAndUnitInput
 import org.example.pantrywisecmp.product.presentation.helper.DateTimeHelper
 import org.example.pantrywisecmp.product.presentation.util.getLabel

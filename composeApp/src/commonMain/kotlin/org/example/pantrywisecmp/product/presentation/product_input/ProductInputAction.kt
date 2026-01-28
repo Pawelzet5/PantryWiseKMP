@@ -1,6 +1,7 @@
 package org.example.pantrywisecmp.product.presentation.product_input
 
 import org.example.pantrywisecmp.product.domain.*
+import org.example.pantrywisecmp.product.presentation.model.ProductDraft
 
 sealed interface ProductInputAction {
     data class OnNameInput(val value: String) : ProductInputAction

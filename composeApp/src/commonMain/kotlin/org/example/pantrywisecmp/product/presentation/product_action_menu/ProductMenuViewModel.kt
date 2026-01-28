@@ -11,6 +11,7 @@ import org.example.pantrywisecmp.product.domain.*
 import org.example.pantrywisecmp.product.domain.repository.ProductRepository
 import org.example.pantrywisecmp.product.domain.usecase.ProductQuantityValidationUseCase
 import org.example.pantrywisecmp.product.domain.usecase.QuantityValidationResult
+import org.example.pantrywisecmp.product.presentation.model.ProductDraft
 import pantrywisecmp.composeapp.generated.resources.*
 import kotlin.uuid.ExperimentalUuidApi
 

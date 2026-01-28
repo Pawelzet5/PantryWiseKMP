@@ -2,6 +2,7 @@ package org.example.pantrywisecmp.product.presentation.product_input
 
 import org.example.pantrywisecmp.core.domain.UiText
 import org.example.pantrywisecmp.product.domain.*
+import org.example.pantrywisecmp.product.presentation.model.ProductDraft
 import kotlin.uuid.ExperimentalUuidApi
 
 data class ProductInputState(

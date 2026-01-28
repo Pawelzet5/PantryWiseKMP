@@ -2,7 +2,7 @@ package org.example.pantrywisecmp.product.presentation.product_action_menu
 
 import org.example.pantrywisecmp.core.domain.UiText
 import org.example.pantrywisecmp.product.domain.Product
-import org.example.pantrywisecmp.product.domain.ProductDraft
+import org.example.pantrywisecmp.product.presentation.model.ProductDraft
 import org.example.pantrywisecmp.product.domain.ProductUnit
 
 data class ProductMenuState(

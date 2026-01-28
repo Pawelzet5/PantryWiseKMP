@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import org.example.pantrywisecmp.core.domain.UiText
 import org.example.pantrywisecmp.core.domain.UiText.StringResourceId
-import org.example.pantrywisecmp.product.domain.ProductDraft
+import org.example.pantrywisecmp.product.presentation.model.ProductDraft
 import org.example.pantrywisecmp.product.domain.usecase.ProductQuantityValidationUseCase
 import org.example.pantrywisecmp.product.domain.usecase.QuantityValidationResult
 import pantrywisecmp.composeapp.generated.resources.*
