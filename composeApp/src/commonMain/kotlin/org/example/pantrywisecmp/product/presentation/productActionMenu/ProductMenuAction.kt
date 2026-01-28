@@ -1,0 +1,17 @@
+package org.example.pantrywisecmp.product.presentation.productActionMenu
+
+import org.example.pantrywisecmp.product.domain.Product
+import org.example.pantrywisecmp.product.domain.ProductDraft
+import org.example.pantrywisecmp.product.domain.ProductUnit
+
+sealed interface ProductMenuAction {
+    data object OnRemoveProductClick : ProductMenuAction
+    data object OnMoveProductClick : ProductMenuAction
+    data object OnFullEditClick : ProductMenuAction
+    data object OnConfirmEditClick : ProductMenuAction
+    data class OnConfirmFullEditClick(val productDraft: ProductDraft) : ProductMenuAction
+    data class OnQuantityInput(val quantity: String) : ProductMenuAction
+    data class OnUnitSelected(val unit: ProductUnit) : ProductMenuAction
+
+    data class OnProductSelected(val product: Product): ProductMenuAction
+}
