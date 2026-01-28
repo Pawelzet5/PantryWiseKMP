@@ -9,6 +9,7 @@ sealed interface ProductMenuAction {
     data object OnMoveProductClick : ProductMenuAction
     data object OnFullEditClick : ProductMenuAction
     data object OnConfirmEditClick : ProductMenuAction
+    data object OnCancelFullEditClick : ProductMenuAction
     data class OnConfirmFullEditClick(val productDraft: ProductDraft) : ProductMenuAction
     data class OnQuantityInput(val quantity: String) : ProductMenuAction
     data class OnUnitSelected(val unit: ProductUnit) : ProductMenuAction

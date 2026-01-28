@@ -28,6 +28,7 @@ class ProductMenuViewModel(
             ProductMenuAction.OnFullEditClick -> handleFullEditClick()
             ProductMenuAction.OnMoveProductClick -> moveProductToShoppingList()
             ProductMenuAction.OnRemoveProductClick -> deleteProduct()
+            ProductMenuAction.OnCancelFullEditClick -> _state.update { it.copy(productDraft = null) }
             is ProductMenuAction.OnConfirmFullEditClick -> handleFullEditClick()
             is ProductMenuAction.OnQuantityInput -> _state.update { it.copy(quantity = action.quantity) }
             is ProductMenuAction.OnUnitSelected -> _state.update { it.copy(unit = action.unit) }

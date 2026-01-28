@@ -64,7 +64,9 @@ fun ProductMenuDialog(
                     onSubmitInput = {
                         onAction(ProductMenuAction.OnConfirmFullEditClick(it))
                     },
-                    onCancel = onDismiss
+                    onCancel = {
+                        onAction(ProductMenuAction.OnCancelFullEditClick)
+                    },
                 )
             else
                 ProductActionMenu(
