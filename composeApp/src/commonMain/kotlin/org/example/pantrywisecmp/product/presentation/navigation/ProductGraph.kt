@@ -17,7 +17,9 @@ fun NavGraphBuilder.productGraph(
             InventoryScreenRoot()
         }
         composable<ProductGraphRoutes.SearchAndSelectProducts> {
-            SearchAndSelectProductsScreenRoot()
+            SearchAndSelectProductsScreenRoot(onNavigateBack = {
+                navController.navigateUp()
+            })
         }
     }
 }

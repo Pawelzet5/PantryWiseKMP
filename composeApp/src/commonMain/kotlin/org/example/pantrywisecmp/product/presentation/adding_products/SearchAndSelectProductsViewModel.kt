@@ -5,8 +5,10 @@ package org.example.pantrywisecmp.product.presentation.adding_products
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import org.example.pantrywisecmp.core.domain.extensions.updateFirst
+import org.example.pantrywisecmp.core.presentation.model.NavigationEvent
 import org.example.pantrywisecmp.product.domain.*
 import org.example.pantrywisecmp.product.domain.repository.ProductRepository
 import org.example.pantrywisecmp.product.domain.repository.SuggestionsRepository
@@ -37,6 +39,9 @@ class SearchAndSelectProductsViewModel(
 
     private val _selectedProduct = MutableStateFlow<ProductDraft?>(null)
     val selectedProduct = _selectedProduct.asStateFlow()
+
+    private val navigationChannel = Channel<NavigationEvent>()
+    val navigationEventsChannelFlow = navigationChannel.receiveAsFlow()
 
     var viewState = combine(
         searchQuery,
@@ -115,5 +120,6 @@ class SearchAndSelectProductsViewModel(
         selectedProducts.value.map {
             it.toProduct(productStatus = ProductStatus.INVENTORY)
         }.let { productRepository.addProductList(it) }
+        navigationChannel.trySend(NavigationEvent.NavigateBack)
     }
 }

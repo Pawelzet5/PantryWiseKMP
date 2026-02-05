@@ -21,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.example.pantrywisecmp.core.presentation.components.ActionIcon
 import org.example.pantrywisecmp.core.presentation.components.SwipeableItemWithActions
+import org.example.pantrywisecmp.core.presentation.model.NavigationEvent
+import org.example.pantrywisecmp.core.presentation.util.ObserveAsEvents
 import org.example.pantrywisecmp.product.presentation.model.ProductDraft
 import org.example.pantrywisecmp.product.domain.ProductSuggestion
 import org.example.pantrywisecmp.product.presentation.helper.DateTimeHelper
@@ -55,9 +57,18 @@ import kotlin.uuid.ExperimentalUuidApi
 
 
 @Composable
-fun SearchAndSelectProductsScreenRoot(viewModel: SearchAndSelectProductsViewModel = koinViewModel()) {
+fun SearchAndSelectProductsScreenRoot(
+    viewModel: SearchAndSelectProductsViewModel = koinViewModel(),
+    onNavigateBack: () -> Unit
+) {
     val state by viewModel.viewState.collectAsStateWithLifecycle()
     val selectedProduct by viewModel.selectedProduct.collectAsStateWithLifecycle()
+
+    ObserveAsEvents(viewModel.navigationEventsChannelFlow) {
+        when(it) {
+            NavigationEvent.NavigateBack -> onNavigateBack()
+        }
+    }
 
     SearchAndSelectProductsScreen(state, viewModel::onAction)
 
