@@ -1,6 +1,7 @@
 package org.example.pantrywisecmp.di
 
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import org.example.pantrywisecmp.product.presentation.shopping_list.ShoppingListViewModel
 import org.example.pantrywisecmp.product.data.repository.ProductRepositoryImpl
 import org.example.pantrywisecmp.product.data.repository.SuggestionsRepositoryImpl
 import org.example.pantrywisecmp.product.data.database.DatabaseFactory
@@ -32,6 +33,7 @@ val sharedModule = module {
     singleOf(::SuggestionsRepositoryImpl).bind<SuggestionsRepository>()
 
     viewModelOf(::InventoryScreenViewModel)
+    viewModelOf(::ShoppingListViewModel)
     viewModelOf(::ProductMenuViewModel)
     viewModelOf(::ProductInputViewModel)
     viewModelOf(::SearchAndSelectProductsViewModel)

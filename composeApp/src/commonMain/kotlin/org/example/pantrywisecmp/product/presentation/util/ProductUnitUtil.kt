@@ -1,6 +1,8 @@
 package org.example.pantrywisecmp.product.presentation.util
 
+import androidx.compose.runtime.Composable
 import org.example.pantrywisecmp.core.domain.UiText
+import org.example.pantrywisecmp.product.domain.Product
 import org.example.pantrywisecmp.product.domain.ProductUnit
 import pantrywisecmp.composeapp.generated.resources.*
 
@@ -39,3 +41,9 @@ fun ProductUnit.getShortLabel(): UiText = when (this) {
     ProductUnit.TABLESPOON -> Res.string.product_unit_short_tablespoon
     else -> null
 }?.let { UiText.StringResourceId(it) }?: getLabel()
+
+@Composable
+fun getProductAmountText(product: Product): String {
+    val unitText = product.productUnit.getShortLabel()
+    return "${product.quantity} ${unitText.asString()}"
+}

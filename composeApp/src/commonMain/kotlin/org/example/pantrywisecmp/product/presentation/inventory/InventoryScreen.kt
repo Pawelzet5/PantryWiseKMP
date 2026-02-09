@@ -16,7 +16,7 @@ import org.example.pantrywisecmp.product.presentation.components.ProductExpirati
 import org.example.pantrywisecmp.product.presentation.product_action_menu.ProductMenuAction
 import org.example.pantrywisecmp.product.presentation.product_action_menu.ProductMenuDialogRoot
 import org.example.pantrywisecmp.product.presentation.product_action_menu.ProductMenuViewModel
-import org.example.pantrywisecmp.product.presentation.util.getShortLabel
+import org.example.pantrywisecmp.product.presentation.util.getProductAmountText
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import pantrywisecmp.composeapp.generated.resources.*
@@ -156,10 +156,4 @@ private fun InventoryProductCard(
             }
         }
     }
-}
-
-@Composable
-fun getProductAmountText(product: Product): String {
-    val unitText = product.productUnit.getShortLabel()
-    return "${product.quantity} ${unitText.asString()}"
 }
