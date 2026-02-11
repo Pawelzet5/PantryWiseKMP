@@ -1,4 +1,4 @@
-package com.example.pantrywise.ui.theme
+package org.example.pantrywisecmp.core.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable

@@ -3,7 +3,6 @@ package org.example.pantrywisecmp.core.presentation.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import com.example.pantrywise.ui.theme.Typography
 
 // --- Light Theme Colors ---
 private val LightColorScheme = lightColorScheme(

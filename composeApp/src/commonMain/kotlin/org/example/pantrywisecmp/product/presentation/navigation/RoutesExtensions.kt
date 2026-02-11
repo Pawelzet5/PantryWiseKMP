@@ -42,13 +42,3 @@ fun NavBackStackEntry.toProductGraphRoute(): ProductGraphRoutes? {
         else -> null
     }
 }
-
-fun NavBackStackEntry.currentRoute(): ProductGraphRoutes? {
-    return when (toRoute<ProductGraphRoutes>()) {
-        ProductGraphRoutes.Inventory-> ProductGraphRoutes.Inventory
-        ProductGraphRoutes.SearchAndSelectProducts -> ProductGraphRoutes.SearchAndSelectProducts
-        ProductGraphRoutes.AddProductsWithCamera -> ProductGraphRoutes.AddProductsWithCamera
-        ProductGraphRoutes.ShoppingList -> ProductGraphRoutes.ShoppingList
-        else -> null
-    }
-}
