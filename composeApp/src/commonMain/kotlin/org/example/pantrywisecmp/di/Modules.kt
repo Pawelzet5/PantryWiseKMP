@@ -13,6 +13,7 @@ import org.example.pantrywisecmp.product.presentation.adding_products.SearchAndS
 import org.example.pantrywisecmp.product.presentation.inventory.InventoryScreenViewModel
 import org.example.pantrywisecmp.product.presentation.product_action_menu.ProductMenuViewModel
 import org.example.pantrywisecmp.product.presentation.product_input.ProductInputViewModel
+import org.example.pantrywisecmp.core.presentation.util.SnackbarManager
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
@@ -21,12 +22,18 @@ import org.koin.dsl.module
 
 expect val platformModule: Module
 
-val sharedModule = module {
+val coreModule = module {
     single {
         get<DatabaseFactory>().create()
             .setDriver(BundledSQLiteDriver())
             .build()
     }
+
+    single { SnackbarManager() }
+}
+
+
+val productModule = module {
     single { get<PantryWiseDatabase>().productDao() }
 
     singleOf(::ProductRepositoryImpl).bind<ProductRepository>()

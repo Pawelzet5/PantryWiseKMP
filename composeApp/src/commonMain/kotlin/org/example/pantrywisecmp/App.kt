@@ -10,16 +10,30 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.pantrywise.presentation.components.SpeedDialFab
+import kotlinx.coroutines.launch
 import org.example.pantrywisecmp.core.presentation.theme.PantryWiseTheme
+import org.example.pantrywisecmp.core.presentation.util.ObserveAsEvents
+import org.example.pantrywisecmp.core.presentation.util.SnackbarManager
 import org.example.pantrywisecmp.product.presentation.components.FancyBottomBar
 import org.example.pantrywisecmp.product.presentation.navigation.*
 import org.example.pantrywisecmp.product.presentation.navigationBarItems
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
 
 @Composable
 fun App() {
     val navController = rememberNavController()
     val currentRoute by navController.currentBackStackEntryAsState()
+
+    val snackbarState = remember { SnackbarHostState() }
+    val snackbarManager = koinInject<SnackbarManager>()
+    val scope = rememberCoroutineScope()
+
+    ObserveAsEvents(snackbarManager.messages) {
+        scope.launch {
+            snackbarState.showSnackbar(it.asString())
+        }
+    }
 
     PantryWiseTheme {
         Scaffold(
@@ -50,6 +64,9 @@ fun App() {
                         )
                     }
                 }
+            },
+            snackbarHost = {
+                SnackbarHost(snackbarState)
             }
         ) { innerPadding ->
             NavigationRoot(
