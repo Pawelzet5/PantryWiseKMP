@@ -113,7 +113,6 @@ class SearchAndSelectProductsViewModel(
                 )
         }
         _selectedProduct.update { null }
-        selectedTabIndex.update { ProductAddingTab.SELECTED.ordinal }
     }
 
     private fun handleProductSuggestionClick(productSuggestion: ProductSuggestion) {
