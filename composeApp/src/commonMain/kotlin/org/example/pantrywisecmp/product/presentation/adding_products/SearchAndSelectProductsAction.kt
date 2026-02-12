@@ -17,7 +17,7 @@ sealed interface SearchAndSelectProductsAction {
 
     data class OnConfirmProductInputClick(val productDraft: ProductDraft) :
         SearchAndSelectProductsAction
-
+    data class OnTabSelected(val index: Int): SearchAndSelectProductsAction
     data object OnAddProductManually : SearchAndSelectProductsAction
     data object OnCancelProductInputClick : SearchAndSelectProductsAction
     data object OnAddProductList : SearchAndSelectProductsAction

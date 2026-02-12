@@ -9,7 +9,8 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import org.example.pantrywisecmp.core.domain.extensions.updateFirst
 import org.example.pantrywisecmp.core.presentation.model.NavigationEvent
-import org.example.pantrywisecmp.product.domain.*
+import org.example.pantrywisecmp.product.domain.ProductStatus
+import org.example.pantrywisecmp.product.domain.ProductSuggestion
 import org.example.pantrywisecmp.product.domain.repository.ProductRepository
 import org.example.pantrywisecmp.product.domain.repository.SuggestionsRepository
 import org.example.pantrywisecmp.product.presentation.model.ProductDraft
@@ -36,6 +37,7 @@ class SearchAndSelectProductsViewModel(
         )
     private val recentProductsList = suggestionsRepository.getRecentProductsSuggestions()
     private val selectedProducts = MutableStateFlow<List<ProductDraft>>(emptyList())
+    private val selectedTabIndex = MutableStateFlow(ProductAddingTab.SELECTED.ordinal)
 
     private val _selectedProduct = MutableStateFlow<ProductDraft?>(null)
     val selectedProduct = _selectedProduct.asStateFlow()
@@ -47,8 +49,9 @@ class SearchAndSelectProductsViewModel(
         searchQuery,
         suggestionResults,
         selectedProducts,
-        recentProductsList
-    ) { query, suggestions, selectedProducts, recentProducts ->
+        recentProductsList,
+        selectedTabIndex
+    ) { query, suggestions, selectedProducts, recentProducts, selectedTabIndex ->
         val selectedProductNames = selectedProducts.map { it.name }
         val productSuggestions = suggestions.map {
             if (selectedProductNames.contains(it.name))
@@ -59,12 +62,13 @@ class SearchAndSelectProductsViewModel(
             queryText = query,
             selectedProducts = selectedProducts,
             suggestedProducts = productSuggestions,
-            recentProducts = recentProducts
+            recentProducts = recentProducts,
+            selectedTabIndex = selectedTabIndex
         )
     }.stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5000L),
-        SearchAndSelectProductsState()
+        SearchAndSelectProductsState(selectedTabIndex = selectedTabIndex.value)
     )
 
     fun onAction(action: SearchAndSelectProductsAction) {
@@ -81,6 +85,9 @@ class SearchAndSelectProductsViewModel(
                 it.minus(action.productDraft)
             }
 
+            is SearchAndSelectProductsAction.OnTabSelected -> selectedTabIndex.update {
+                action.index
+            }
             SearchAndSelectProductsAction.OnAddProductList -> handleAddProducts()
             SearchAndSelectProductsAction.OnAddProductManually -> handleAddProductManually()
             is SearchAndSelectProductsAction.OnConfirmProductInputClick -> handleConfirmProductInput(
@@ -106,6 +113,7 @@ class SearchAndSelectProductsViewModel(
                 )
         }
         _selectedProduct.update { null }
+        selectedTabIndex.update { ProductAddingTab.SELECTED.ordinal }
     }
 
     private fun handleProductSuggestionClick(productSuggestion: ProductSuggestion) {
@@ -117,9 +125,9 @@ class SearchAndSelectProductsViewModel(
     }
 
     private fun handleAddProducts() = viewModelScope.launch(Dispatchers.IO) {
-        selectedProducts.value.map {
-            it.toProduct(productStatus = ProductStatus.INVENTORY)
-        }.let { productRepository.addProductList(it) }
-        navigationChannel.trySend(NavigationEvent.NavigateBack)
+            selectedProducts.value.map {
+                it.toProduct(productStatus = ProductStatus.INVENTORY)
+            }.let { productRepository.addProductList(it) }
+            navigationChannel.trySend(NavigationEvent.NavigateBack)
     }
 }

@@ -30,7 +30,6 @@ import org.example.pantrywisecmp.product.presentation.product_input.ProductInput
 import org.example.pantrywisecmp.product.presentation.product_input.ProductInputScreenRoot
 import org.example.pantrywisecmp.product.presentation.product_input.ProductInputViewModel
 import org.example.pantrywisecmp.product.presentation.util.getLabel
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -45,9 +44,6 @@ import pantrywisecmp.composeapp.generated.resources.ic_circle_add
 import pantrywisecmp.composeapp.generated.resources.ic_delete
 import pantrywisecmp.composeapp.generated.resources.product_input_search_placeholder
 import pantrywisecmp.composeapp.generated.resources.product_input_view_add_products_to_inventory
-import pantrywisecmp.composeapp.generated.resources.product_suggestion_type_recent_label
-import pantrywisecmp.composeapp.generated.resources.product_suggestion_type_search_label
-import pantrywisecmp.composeapp.generated.resources.product_suggestion_type_selected_label
 import pantrywisecmp.composeapp.generated.resources.recent_product_list_empty_message
 import pantrywisecmp.composeapp.generated.resources.selected_product_list_empty_message
 import pantrywisecmp.composeapp.generated.resources.suggested_product_list_empty_message_add_product_text
@@ -109,6 +105,9 @@ private fun SearchAndSelectProductsScreen(
             onQueryInput = {
                 onAction(SearchAndSelectProductsAction.OnQueryTextInput(it))
             },
+            onTabSelected = {
+                onAction(SearchAndSelectProductsAction.OnTabSelected(it))
+            },
             modifier = Modifier.fillMaxSize()
         )
 
@@ -162,34 +161,30 @@ private fun AddingProductTab(
     onProductSuggestionClick: (ProductSuggestion) -> Unit,
     onAddManually: () -> Unit,
     onQueryInput: (String) -> Unit,
+    onTabSelected: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val tabItems = ProductAddingTab.entries
-    var selectedTabIndex by remember {
-        mutableIntStateOf(1)
-    }
     val pagerState = rememberPagerState(
-        initialPage = selectedTabIndex,
+        initialPage = state.selectedTabIndex,
         pageCount = { tabItems.size },
     )
-    LaunchedEffect(selectedTabIndex) {
-        pagerState.animateScrollToPage(selectedTabIndex)
+    LaunchedEffect(state.selectedTabIndex) {
+        pagerState.animateScrollToPage(state.selectedTabIndex)
     }
     LaunchedEffect(pagerState.currentPage, pagerState.isScrollInProgress) {
         if (!pagerState.isScrollInProgress)
-            selectedTabIndex = pagerState.currentPage
+            onTabSelected(pagerState.currentPage)
     }
     Column(modifier.fillMaxWidth()) {
         SecondaryTabRow(
-            selectedTabIndex = selectedTabIndex,
+            selectedTabIndex = state.selectedTabIndex,
             containerColor = MaterialTheme.colorScheme.primaryContainer
         ) {
             tabItems.forEachIndexed { index, item ->
                 Tab(
-                    selected = index == selectedTabIndex,
-                    onClick = {
-                        selectedTabIndex = index
-                    },
+                    selected = index == state.selectedTabIndex,
+                    onClick = { onTabSelected(index) },
                     text = {
                         Text(
                             text = stringResource(item.labelRes),
@@ -216,20 +211,14 @@ private fun AddingProductTab(
                 ProductAddingTab.SEARCH -> SuggestedProductsTabContent(
                     queryText = state.queryText,
                     productSuggestionList = state.suggestedProducts,
-                    onProductSuggestionClick = {
-                        onProductSuggestionClick(it)
-                        selectedTabIndex = ProductAddingTab.SELECTED.ordinal
-                    },
+                    onProductSuggestionClick = onProductSuggestionClick,
                     onAddManually = onAddManually,
                     onQueryInput = onQueryInput
                 )
 
                 ProductAddingTab.RECENT -> RecentProductsTabContent(
                     recentProductList = state.recentProducts,
-                    onProductSuggestionClick = {
-                        onProductSuggestionClick(it)
-                        selectedTabIndex = ProductAddingTab.SELECTED.ordinal
-                    }
+                    onProductSuggestionClick = onProductSuggestionClick
                 )
             }
         }
@@ -519,10 +508,4 @@ private fun SearchBar(
         shape = RoundedCornerShape(28.dp),
         modifier = modifier.fillMaxWidth()
     )
-}
-
-enum class ProductAddingTab(val labelRes: StringResource) {
-    SELECTED(Res.string.product_suggestion_type_selected_label),
-    SEARCH(Res.string.product_suggestion_type_search_label),
-    RECENT(Res.string.product_suggestion_type_recent_label)
 }
