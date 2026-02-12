@@ -153,7 +153,7 @@ fun ProductCategoryHeader(
 
         val headerText = stringResource(
             Res.string.product_category_with_count,
-            labelText.asString(),
+            labelText.asStringComposable(),
             productCount
         )
         Text(

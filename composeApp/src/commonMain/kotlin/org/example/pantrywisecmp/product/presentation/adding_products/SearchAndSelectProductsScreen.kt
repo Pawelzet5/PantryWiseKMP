@@ -275,7 +275,7 @@ private fun SelectedProductRow(
     onDelete: () -> Unit
 ) {
     val quantityWithUnitText = if (!productDraft.quantity?.toString().isNullOrEmpty())
-        "${productDraft.quantity} " + productDraft.productUnit.getLabel().asString()
+        "${productDraft.quantity} " + productDraft.productUnit.getLabel().asStringComposable()
     else ""
 
     SwipeableItemWithActions(

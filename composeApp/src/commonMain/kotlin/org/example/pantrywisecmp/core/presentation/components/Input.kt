@@ -100,7 +100,7 @@ fun StyledTextField(
             }
         },
         supportingText = errorText?.let { it ->
-            { Text(text = it.asString(), color = MaterialTheme.colorScheme.error) }
+            { Text(text = it.asStringComposable(), color = MaterialTheme.colorScheme.error) }
         },
         keyboardOptions = keyboardOptions,
         keyboardActions = keyBoardActions,

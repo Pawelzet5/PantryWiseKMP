@@ -45,5 +45,5 @@ fun ProductUnit.getShortLabel(): UiText = when (this) {
 @Composable
 fun getProductAmountText(product: Product): String {
     val unitText = product.productUnit.getShortLabel()
-    return "${product.quantity} ${unitText.asString()}"
+    return "${product.quantity} ${unitText.asStringComposable()}"
 }

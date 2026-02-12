@@ -150,9 +150,9 @@ fun ProductCategoryDropdown(
         modifier = modifier,
         labelRes = Res.string.product_input_view_category_label,
         selected = selected,
-        selectedLabel = { it.getLabel().asString() },
+        selectedLabel = { it.getLabel().asStringComposable() },
         options = ProductCategory.entries.toList(),
-        optionLabel = { it.getLabel().asString() },
+        optionLabel = { it.getLabel().asStringComposable() },
         onSelected = onSelected
     )
 }
